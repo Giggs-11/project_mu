@@ -1,0 +1,23 @@
+[project]
+name = "my-project-mu"
+version = "0.1.0"
+description = "Django project"
+authors = [
+    {name = "denis19091989@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "django (>=6.0.2,<7.0.0)",
+    "ruff (>=0.15.1,<0.16.0)",
+    "mypy (>=1.19.1,<2.0.0)",
+    "typing-extensions (>=4.15.0,<5.0.0)",
+    "bandit (>=1.9.3,<2.0.0)",
+    "radon (>=6.0.1,<7.0.0)",
+    "pre-commit (>=4.5.1,<5.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

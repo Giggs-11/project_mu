@@ -1,0 +1,12 @@
+services:
+  backend:
+    container_name: django_app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: python src/manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    working_dir: /app
+    ports:
+      - "8000:8000"

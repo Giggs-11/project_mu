@@ -1,12 +1,30 @@
 services:
-  backend:
-    container_name: django_app
-    build:
-      context: .
-      dockerfile: Dockerfile
-    command: python src/manage.py runserver 0.0.0.0:8000
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: my_project_db
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  web:
+    build: .
     volumes:
       - .:/app
-    working_dir: /app
     ports:
       - "8000:8000"
+    environment:
+      - DATABASE_HOST=db
+      - DATABASE_NAME=my_project_db
+      - DATABASE_USER=user
+      - DATABASE_PASSWORD=user_password
+    depends_on:
+      - db
+
+volumes:
+  mysql_data:

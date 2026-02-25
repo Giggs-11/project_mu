@@ -1,7 +1,8 @@
 FROM python:3.12-slim
 
-
 RUN apt-get update && apt-get install -y \
+    --no-install-recommends \
+    -o Acquire::Retries=3 \
     default-libmysqlclient-dev \
     build-essential \
     pkg-config \

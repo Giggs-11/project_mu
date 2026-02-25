@@ -15,6 +15,15 @@ def create_booking(room_id: int, date_start: date, date_end: date) -> Booking:
         room = Room.objects.filter(pk=room_id).select_for_update().first()
         if room is None:
             raise Room.DoesNotExist(f'Комната {room_id} не найдена')
+
+        overlap = Booking.objects.filter(
+            room_id=room_id,
+            date_start__lt=date_end,
+            date_end__gt=date_start,
+        ).exists()
+        if overlap:
+            raise ValueError("Номер уже забронирован на эти даты")
+
     return Booking.objects.create(
         room=room,
         date_start=date_start,

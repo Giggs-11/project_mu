@@ -9,16 +9,16 @@ VALID_SORT_FIELDS = {
     "date_desc": "-created_at",
 }
 
-def create_room() -> Room:
+def create_room(description: str, price_per_night) -> Room:
     return Room.objects.create(
         description=description,
         price_per_night=price_per_night,
     )
 
+
 def delete_room(room_id: int) -> None:
-    # CASCADE на уровне БД удалит все связанные Booking.
-    delete_count, _ = Room.objects.filter(pk=room_id).delete()
-    if delete_count:
+    deleted_count, _ = Room.objects.filter(pk=room_id).delete()
+    if not deleted_count:
         raise Room.DoesNotExist(f'Комната {room_id} не найдена')
 
 

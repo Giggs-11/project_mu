@@ -1,4 +1,3 @@
-from django.db import transaction
 from hotels.models import Room
 
 # Словарь маппинга

@@ -1,8 +1,10 @@
 from datetime import date
+
 from django.db import transaction
 
 from bookings.models import Booking
 from hotels.models import Room
+
 
 def create_booking(room_id: int, date_start: date, date_end: date) -> Booking:
     # нельзя выехать раньше, чем заехал

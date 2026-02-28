@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Booking(models.Model):
     room = models.ForeignKey(
         'hotels.Room',

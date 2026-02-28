@@ -2,6 +2,7 @@ from decimal import Decimal, InvalidOperation
 
 from django.http import JsonResponse
 from django.views import View
+
 from hotels.models import Room
 from hotels.service import create_room, delete_room, list_rooms
 

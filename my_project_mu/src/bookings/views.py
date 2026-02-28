@@ -7,8 +7,6 @@ from bookings.models import Booking
 from bookings.service import create_booking, delete_booking, list_bookings
 from hotels.models import Room
 
-
-
 DATE_FORMAT = "%Y-%m-%d"
 
 # функция валидации + парсинга даты

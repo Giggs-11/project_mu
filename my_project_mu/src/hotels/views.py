@@ -3,11 +3,13 @@ from decimal import Decimal, InvalidOperation
 from django.http import JsonResponse
 from django.utils.decorators import method_decorator
 from django.views import View
+from django.views.decorators.csrf import csrf_exempt
 
 from core.exceptions import handle_exceptions
 from hotels.service import create_room, delete_room, list_rooms
 
 
+@method_decorator(csrf_exempt, name="dispatch")
 @method_decorator(handle_exceptions, name="dispatch")
 class RoomCreateView(View):
     def post(self, request):
@@ -30,14 +32,14 @@ class RoomCreateView(View):
         room = create_room(description=description, price_per_night=price)
         return JsonResponse({"room_id": room.pk}, status=201)
 
-
+@method_decorator(csrf_exempt, name="dispatch")
 @method_decorator(handle_exceptions, name="dispatch")
 class RoomDeleteView(View):
     def delete(self, request, room_id):
         delete_room(room_id)
         return JsonResponse({"deleted": True})
 
-
+@method_decorator(csrf_exempt, name="dispatch")
 @method_decorator(handle_exceptions, name="dispatch")
 class RoomListView(View):
     VALID_SORT_VALUES = {"price_asc", "price_desc", "date_asc", "date_desc"}

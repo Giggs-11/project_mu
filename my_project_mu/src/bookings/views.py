@@ -4,6 +4,7 @@ from typing import Optional, Tuple
 from django.http import JsonResponse
 from django.utils.decorators import method_decorator
 from django.views import View
+from django.views.decorators.csrf import csrf_exempt
 
 from bookings.service import create_booking, delete_booking, list_bookings
 from core.exceptions import handle_exceptions
@@ -21,7 +22,7 @@ def parse_date(
     except ValueError:
         return None, f"{field_name} должно быть в формате YYYY-MM-DD"
 
-
+@method_decorator(csrf_exempt, name="dispatch")
 @method_decorator(handle_exceptions, name="dispatch")
 class BookingCreateView(View):
     def post(self, request):
@@ -49,14 +50,14 @@ class BookingCreateView(View):
         )
         return JsonResponse({"booking_id": booking.pk}, status=201)
 
-
+@method_decorator(csrf_exempt, name="dispatch")
 @method_decorator(handle_exceptions, name="dispatch")
 class BookingDeleteView(View):
     def delete(self, request, booking_id):
         delete_booking(booking_id)
         return JsonResponse({"deleted": True})
 
-
+@method_decorator(csrf_exempt, name="dispatch")
 @method_decorator(handle_exceptions, name="dispatch")
 class BookingListView(View):
     def get(self, request):

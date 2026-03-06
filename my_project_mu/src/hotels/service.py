@@ -1,3 +1,5 @@
+from decimal import Decimal
+
 from hotels.models import Room
 
 # Словарь маппинга
@@ -8,7 +10,7 @@ VALID_SORT_FIELDS = {
     "date_desc": "-created_at",
 }
 
-def create_room(description: str, price_per_night) -> Room:
+def create_room(description: str, price_per_night: Decimal) -> Room:
     return Room.objects.create(
         description=description,
         price_per_night=price_per_night,

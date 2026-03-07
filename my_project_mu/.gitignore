@@ -1,0 +1,49 @@
+  # Секреты
+.env
+*/.env
+**/.env
+
+# Виртуальные окружения
+.venv/
+.poetry/
+venv/
+env/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+
+# Логи
+*.log
+logs/
+
+# Django
+*.sqlite3
+media/
+staticfiles/
+
+# Docker
+.dockerenv
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Mypy
+.mypy_cache/
+
+# Ruff
+.ruff_cache/
+
+# Coverage
+.coverage
+htmlcov/
+
+# OS
+.DS_Store
+Thumbs.db

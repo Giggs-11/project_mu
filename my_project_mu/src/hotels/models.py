@@ -12,7 +12,7 @@ class Room(models.Model):
 
     class Meta:
         verbose_name = "Номер отеля"
-        verbose_name_plural = "Номер отеля"
+        verbose_name_plural = "Номера отелей"
         indexes = [
             models.Index(fields=["price_per_night"]),
             models.Index(fields=["created_at"]),

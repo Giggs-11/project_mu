@@ -1,4 +1,3 @@
-import pymysql
+import pymysql  # type: ignore
 
-pymysql.version_info = (2, 2, 1, "final", 0)  # Мы "говорим" Django, что у нас версия 2.2.1
 pymysql.install_as_MySQLdb()

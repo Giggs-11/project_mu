@@ -17,8 +17,7 @@ class Booking(models.Model):
         verbose_name = "Бронирование"
         verbose_name_plural = "Бронирования"
         indexes = [
-            models.Index(fields=['room', 'date_start']),
-            models.Index(fields=['date_start', 'date_end']),
+            models.Index(fields=['room', 'date_start','date_end']),
         ]
 
     def __str__(self):

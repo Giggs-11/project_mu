@@ -26,11 +26,11 @@ def create_booking(room_id: int, date_start: date, date_end: date) -> Booking:
         if overlap:
             raise ValueError("Номер уже забронирован на эти даты")
 
-    return Booking.objects.create(
-        room=room,
-        date_start=date_start,
-        date_end=date_end,
-    )
+        return Booking.objects.create(
+            room=room,
+            date_start=date_start,
+            date_end=date_end,
+        )
 
 
 def delete_booking(booking_id: int) -> None:
